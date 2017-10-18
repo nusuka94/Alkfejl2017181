@@ -1,0 +1,5 @@
+hu\elte\inf\orarend\persistence\models\Targyak.class
+hu\elte\inf\orarend\web\services\TargyakService.class
+hu\elte\inf\orarend\OrarendApplication.class
+hu\elte\inf\orarend\web\controllers\TargyakController.class
+hu\elte\inf\orarend\persistence\repositories\TargyakRepository.class
