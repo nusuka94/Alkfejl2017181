@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TargyakController{
 
     @Autowired
-    private TargyakService targyakServicece;
+    private TargyakService targyakService;
 
     @RequestMapping("/hello")
     public String hello(Model model) {
-        System.out.print(targyakServicece.findAll());
-        model.addAttribute("list", targyakServicece.findAll());
+        System.out.print(targyakService.findAll());
+        model.addAttribute("list", targyakService.findAll());
         model.addAttribute("title", "CICIK ( . Y . )");
         return "hello";
     }
