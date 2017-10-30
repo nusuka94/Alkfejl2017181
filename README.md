@@ -4,10 +4,10 @@ A programban a hallgatóknak órarend összeállítására van lehetőségük.
 
 ## 1. Követelményanalízis
 
-Funkcionális követelmények:
+### Funkcionális követelmények:
   
 
-Szerepkörök:  
+### Szerepkörök:  
 >admin:  
 >>hallgatók adatainak módosítása (törlés, hozzáadás, stb.)  
 >>hallgatók órarendjének módosítása
@@ -15,6 +15,12 @@ Szerepkörök:
 >hallgató:  
 >>órarend tervezése (kurzusok felvétele, törlése)  
 
-## 2. Adatbázisterv
+## 2. Tervezés
 
+### Adatbázisterv  
 ![DatabaseUML](DatabaseUML.jpg)
+
+## 3. Implementáció
+
+### Könyvtárstruktúra
+
