@@ -13,11 +13,11 @@ public class TargyakController{
     @Autowired
     private TargyakService targyakService;
 
-    @RequestMapping("/hello")
-    public String hello(Model model) {
+    @RequestMapping("/targyak")
+    public String targyak(Model model) {
         System.out.print(targyakService.findAll());
         model.addAttribute("list", targyakService.findAll());
-        model.addAttribute("title", "CICIK ( . Y . )");
-        return "hello";
+        model.addAttribute("title", "Tárgyak");
+        return "targyak";
     }
 }
