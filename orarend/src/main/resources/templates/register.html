@@ -9,11 +9,11 @@
         <form action="#" th:action="@{/felhasznalo/register}" th:object="${felhasznalo}" method="post">
             <div id="felhasznalonev">
                 <label for="felhasznalonev">Felhasznalónév:</label>
-                <input type="text" name="felhasznalonev" placeholder="felhasznalonev" th:field="*{felhasznalonev}" />
+                <input type="text" name="felhasznalonev" th:field="*{felhasznalonev}" />
             </div>
             <div id="jelszo">
                 <label for="jelszo">Jelszó:</label>
-                <input type="jelszo" name="jelszo" placeholder="jelszo" th:field="*{jelszo}" />
+                <input type="jelszo" name="jelszo" th:field="*{jelszo}" />
             </div>
             <input type="submit" value="Küldés!" />
             <button type="reset">Vissza</button>

@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "HALLGATO")
+@Table(name = "FELHASZNALO")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,9 +18,6 @@ public class Felhasznalo {
     
     @Column(name="felhasznalonev")
     private String felhasznalonev;
-    
-    @Column(name="neptun",nullable=false, unique = true)
-    private String neptun;
     
     @Column(name="jelszo")
     private String jelszo;

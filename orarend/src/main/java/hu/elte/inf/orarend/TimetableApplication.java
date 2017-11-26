@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-public class OrarendApplication extends WebMvcConfigurerAdapter{
+public class TimetableApplication extends WebMvcConfigurerAdapter{
         
         @Autowired
         private HandlerInterceptor authInterceptor;
@@ -20,7 +20,7 @@ public class OrarendApplication extends WebMvcConfigurerAdapter{
         }
     
 	public static void main(String[] args) {
-		SpringApplication.run(OrarendApplication.class, args);
+		SpringApplication.run(TimetableApplication.class, args);
 	}
         
         @Override
