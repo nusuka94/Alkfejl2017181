@@ -20,10 +20,10 @@ public class Kurzusok {
     private String oktato;
 
     @Column(name="nap", length=20)
-    private String nev;
+    private String nap;
 
-    @Column(name="idopont_tol", length=20)
-    private String idopont_tol;
+    @Column(name="idopontTol", length=20)
+    private String idopontTol;
 
     @Column(name="idopont_ig", length=20)
     private String idopont_ig;

@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 public interface KurzusokRepository extends CrudRepository<Kurzusok, Long>{
 
     Kurzusok findByOktato(String oktato);
+    Kurzusok findByNap(String nap);
+    Kurzusok findByIdopontTol(String idopontTol);
 
 //    @Query("select s.firstname from Student s where s.firstname like ?1%")
 //    List<Targyak> findByFirstNameSegment(String firstName);

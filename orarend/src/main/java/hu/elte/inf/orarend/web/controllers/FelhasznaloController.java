@@ -6,14 +6,9 @@ import hu.elte.inf.orarend.web.services.FelhasznaloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/felhasznalo")
 public class FelhasznaloController {
     
     @Autowired
@@ -24,8 +19,15 @@ public class FelhasznaloController {
         model.addAttribute("name",name);
         return "greeting";
     }
+
+    /*@GetMapping("/index")
+    public String index(String name, Model model) {
+        model.addAttribute("name",name);
+        return "index";
+    }*/
     
-    @GetMapping("/login")
+    //@GetMapping("/login")
+    @GetMapping("/")
     public String login(Model model) {
         model.addAttribute(new Felhasznalo());
         return "login";
@@ -47,13 +49,14 @@ public class FelhasznaloController {
     }
     
     @PostMapping("/register")
-    public String register(@ModelAttribute Felhasznalo felhasznalo) {
+    public String register(@RequestBody Felhasznalo felhasznalo) {
         felhasznaloService.register(felhasznalo);
+        //return felhasznalo;
         return redirectToGreeting(felhasznalo);
     }
     
-    private String redirectToGreeting(@ModelAttribute Felhasznalo felhasznalo) {
-        return "redirect:/felhasznalo/greet?name=" + felhasznalo.getFelhasznalonev();
+    private String redirectToGreeting(@RequestBody Felhasznalo felhasznalo) {
+        //return "redirect:/greet?name=" + felhasznalo.getFelhasznalonev();
+        return "redirect:/api/felhasznalo";
     }
-    
 }
