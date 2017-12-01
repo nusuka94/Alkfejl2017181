@@ -30,10 +30,6 @@ public class FelhasznaloService {
         return felhasznalo;
     }
     
-    /*public Felhasznalo findByFelhasznalonev(String felhasznalonev) {
-        return hallgatoRepository.findByFelhasznalonev(felhasznalonev);
-    }*/
-    
     public boolean isValid(Felhasznalo felhasznalo) {
         return felhasznaloRepository.findByFelhasznalonevAndJelszo(felhasznalo.getFelhasznalonev(), felhasznalo.getJelszo()).isPresent();
     }

@@ -1,14 +1,3 @@
-hu\elte\inf\orarend\persistence\models\Targyak.class
-hu\elte\inf\orarend\persistence\models\Kurzusok.class
-hu\elte\inf\orarend\web\services\TargyakService.class
+hu\elte\inf\orarend\web\config\AuthInterceptor.class
 hu\elte\inf\orarend\web\controllers\IndexController.class
-hu\elte\inf\orarend\web\controllers\KurzusokController.class
-hu\elte\inf\orarend\web\controllers\TargyakController.class
-hu\elte\inf\orarend\web\services\TermekService.class
-hu\elte\inf\orarend\persistence\repositories\TargyakRepository.class
-hu\elte\inf\orarend\web\controllers\TermekController.class
-hu\elte\inf\orarend\OrarendApplication.class
-hu\elte\inf\orarend\persistence\repositories\KurzusokRepository.class
-hu\elte\inf\orarend\persistence\repositories\TermekRepository.class
-hu\elte\inf\orarend\web\services\KurzusokService.class
-hu\elte\inf\orarend\persistence\models\Termek.class
+hu\elte\inf\orarend\web\services\annotations\Role.class
