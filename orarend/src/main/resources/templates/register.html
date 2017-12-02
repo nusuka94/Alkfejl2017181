@@ -1,22 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Regisztráció</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    </head>
-    <body>
-        <h1>Regisztráció</h1>
-        <form action="#" th:action="@{/felhasznalo/register}" th:object="${felhasznalo}" method="post">
-            <div id="felhasznalonev">
-                <label for="felhasznalonev">Felhasznalónév:</label>
-                <input type="text" name="felhasznalonev" th:field="*{felhasznalonev}" />
-            </div>
-            <div id="jelszo">
-                <label for="jelszo">Jelszó:</label>
-                <input type="jelszo" name="jelszo" th:field="*{jelszo}" />
-            </div>
-            <input type="submit" value="Küldés!" />
-            <button type="reset">Vissza</button>
-        </form>
-    </body>
+<head>
+    <title>Regisztráció</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Regisztráció</h1>
+<form action="#" th:action="@{/register}" th:object="${user}" method="post">
+    <div id="felhasznalonev">
+        <label for="felhasznalonev">Felhasznalónév:</label>
+        <input type="text" name="felhasznalonev" th:field="*{felhasznalonev}" />
+    </div>
+    <div id="jelszo">
+        <label for="jelszo">Jelszó:</label>
+        <input type="jelszo" name="jelszo" th:field="*{jelszo}" />
+    </div>
+    <input type="submit" value="Regisztráció" />
+    <button type="reset">Vissza</button>
+</form>
+</body>
 </html>

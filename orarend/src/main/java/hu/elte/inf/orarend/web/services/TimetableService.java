@@ -6,8 +6,8 @@
 package hu.elte.inf.orarend.web.services;
 
 import hu.elte.inf.orarend.persistence.models.Timetable;
+import hu.elte.inf.orarend.persistence.models.User;
 import hu.elte.inf.orarend.persistence.repositories.TimetableRepository;
-import hu.elte.inf.orarend.persistence.models.Felhasznalo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class TimetableService {
         return timetableRepository.findAll();
     }
     
-    public Iterable<Timetable> listByUser(Felhasznalo user) {
+    public Iterable<Timetable> listByUser(User user) {
         if(user == null) {
             return timetableRepository.findAll();
         }

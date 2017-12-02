@@ -1,7 +1,8 @@
 package hu.elte.inf.orarend.web.api;
 
-import hu.elte.inf.orarend.web.services.FelhasznaloService;
+import hu.elte.inf.orarend.web.services.UserService;
 import hu.elte.inf.orarend.web.services.TermekService;
+import hu.elte.inf.orarend.web.services.annotations.Authorized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,19 +14,17 @@ import org.springframework.web.context.annotation.SessionScope;
 @RestController
 @SessionScope
 @RequestMapping("/api/home")
+@Authorized
 public class HomeApiController {
 
     @Autowired
     private TermekService termekService;
 
     @Autowired
-    private FelhasznaloService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/termek", method = RequestMethod.POST)
     public Object termek() {
-        if(!userService.isLoggedIn()) {
-            return new ResponseEntity<String>("Unauthorized", HttpStatus.UNAUTHORIZED);
-        }
         return termekService.findAll();
     }
 }

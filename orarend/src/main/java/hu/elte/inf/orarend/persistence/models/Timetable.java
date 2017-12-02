@@ -29,6 +29,6 @@ public class Timetable {
     private String classes;
     
     @JoinColumn
-    @ManyToOne(targetEntity = Felhasznalo.class)
-    private Felhasznalo owner;
+    @ManyToOne(targetEntity = User.class)
+    private User owner;
 }
