@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private long id;
     
@@ -22,7 +22,7 @@ public class User {
     @Column(name="PASSWORD")
     private String password;
     
-    @Column(name="ROLE", nullable = false,unique=true)
+    @Column(name="ROLE", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
     public enum Role {
