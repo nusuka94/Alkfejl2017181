@@ -7,13 +7,13 @@
 <body>
 <h1>Regisztráció</h1>
 <form action="#" th:action="@{/register}" th:object="${user}" method="post">
-    <div id="felhasznalonev">
-        <label for="felhasznalonev">Felhasznalónév:</label>
-        <input type="text" name="felhasznalonev" th:field="*{felhasznalonev}" />
+    <div id="username">
+        <label for="username">Felhasznalónév:</label>
+        <input type="text" name="username" th:field="*{username}" />
     </div>
-    <div id="jelszo">
-        <label for="jelszo">Jelszó:</label>
-        <input type="jelszo" name="jelszo" th:field="*{jelszo}" />
+    <div id="password">
+        <label for="password">Jelszó:</label>
+        <input type="password" name="password" th:field="*{password}" />
     </div>
     <input type="submit" value="Regisztráció" />
     <button type="reset">Vissza</button>

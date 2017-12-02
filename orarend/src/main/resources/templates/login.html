@@ -8,13 +8,13 @@
         <h1>Bejelentkezés</h1>
         <h2 th:if="${loginFailed}">Hibás felhasználónév vagy jelszó!</h2>
         <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-            <div id="felhasznalonev">
-                <label for="felhasznalonev">Felhasználónév:</label>
-                <input type="text" name="felhasznalonev" th:field="*{felhasznalonev}" />
+            <div id="username">
+                <label for="username">Felhasználónév:</label>
+                <input type="text" name="username" th:field="*{username}" />
             </div>
-            <div id="jelszo">
-                <label for="jelszo">Jelszó:</label>
-                <input type="jelszo" name="jelszo" th:field="*{jelszo}" />
+            <div id="password">
+                <label for="password">Jelszó:</label>
+                <input type="password" name="password" th:field="*{password}" />
             </div>
             <input type="submit" value="Küldés!" />
             <button type="reset">Vissza</button>

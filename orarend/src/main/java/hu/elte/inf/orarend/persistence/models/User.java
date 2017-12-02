@@ -6,23 +6,23 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "FELHASZNALO")
+@Table(name = "USER")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name="ID")
     private long id;
     
-    @Column(name="felhasznalonev")
-    private String felhasznalonev;
+    @Column(name="USERNAME")
+    private String username;
     
-    @Column(name="jelszo")
-    private String jelszo;
+    @Column(name="PASSWORD")
+    private String password;
     
-    @Column(name="role", nullable = false,unique=true)
+    @Column(name="ROLE", nullable = false,unique=true)
     @Enumerated(EnumType.STRING)
     private Role role;
     public enum Role {

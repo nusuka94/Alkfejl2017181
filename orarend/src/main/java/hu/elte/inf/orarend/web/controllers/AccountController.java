@@ -21,8 +21,8 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User felhasznalo, Model model) {
-        User user = userService.login(felhasznalo);
+    public String login(@ModelAttribute User userParam, Model model) {
+        User user = userService.login(userParam);
         if(user != null) {
             return "redirect:/index";
         }
@@ -32,7 +32,7 @@ public class AccountController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("felhasznalo",new User());
+        model.addAttribute("user",new User());
         return "register";
     }
 

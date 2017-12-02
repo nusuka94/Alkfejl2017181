@@ -3,7 +3,7 @@ package hu.elte.inf.orarend.web.services;
 import hu.elte.inf.orarend.persistence.models.User;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import hu.elte.inf.orarend.persistence.repositories.FelhasznaloRepository;
+import hu.elte.inf.orarend.persistence.repositories.UserRepository;
 import lombok.Data;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -13,25 +13,25 @@ import org.springframework.web.context.annotation.SessionScope;
 public class UserService {
 
     @Autowired
-    private FelhasznaloRepository felhasznaloRepository;
+    private UserRepository userRepository;
 
     private User user;
 
     public User login(User user) {
         if(isValid(user)) {
-            return this.user = felhasznaloRepository.findByFelhasznalonev(user.getFelhasznalonev()).get();
+            return this.user = userRepository.findByUsername(user.getUsername()).get();
         }
         return null;
     }
 
     public User register(User user) {
         user.setRole(User.Role.USER);
-        this.user = felhasznaloRepository.save(user);
+        this.user = userRepository.save(user);
         return user;
     }
 
     public boolean isValid(User user) {
-        return felhasznaloRepository.findByFelhasznalonevAndJelszo(user.getFelhasznalonev(), user.getJelszo()).isPresent();
+        return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()).isPresent();
     }
 
     public boolean isLoggedIn() {

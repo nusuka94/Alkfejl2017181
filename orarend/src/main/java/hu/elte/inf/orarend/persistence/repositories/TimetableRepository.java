@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TimetableRepository extends CrudRepository<Timetable,Integer>{
     List<Timetable> findByOwner(String owner);
-    Timetable findByName(String name);
 }

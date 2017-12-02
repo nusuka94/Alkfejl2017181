@@ -7,8 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FelhasznaloRepository extends CrudRepository<User, Long>{
-    Optional<User> findByFelhasznalonev(String felhasznalonev);
+public interface UserRepository extends CrudRepository<User, Long>{
+    Optional<User> findByUsername(String username);
     
-    Optional<User> findByFelhasznalonevAndJelszo(String felhasznalonev, String jelszo);
+    Optional<User> findByUsernameAndPassword(String username, String password);
 }

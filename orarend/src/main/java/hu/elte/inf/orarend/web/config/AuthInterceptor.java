@@ -23,7 +23,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 
         boolean isAuthorizedEndpoint = isAuthorizedEndpoint((HandlerMethod) handler);
         //List<User.Role> routeRoles = getRoles((HandlerMethod) handler);
-        User user = userService.getFelhasznalo();
+        User user = userService.getUser();
 
         if(!isAuthorizedEndpoint) {
             return true;

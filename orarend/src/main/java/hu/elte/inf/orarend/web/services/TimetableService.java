@@ -29,7 +29,7 @@ public class TimetableService {
         if(user == null) {
             return timetableRepository.findAll();
         }
-        String username = user.getFelhasznalonev();
+        String username = user.getUsername();
         return timetableRepository.findByOwner(username);
     }
     
@@ -39,9 +39,5 @@ public class TimetableService {
     
     public void delete(int id) {
         timetableRepository.delete(id);
-    }
-    
-    public Timetable read(String name) {
-        return timetableRepository.findByName(name);
     }
 }
