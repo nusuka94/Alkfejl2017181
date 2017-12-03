@@ -15,6 +15,8 @@ import { MenuComponent } from './menu/menu.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialItemsModule} from './MaterialItemsModule';
 import { PlannerComponent } from './pages/planner/planner.component';
+import { NewTimetableComponent } from './pages/new-timetable/new-timetable.component';
+import {TimetableService} from "./services/timetable.service";
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { PlannerComponent } from './pages/planner/planner.component';
     LoginComponent,
     RegisterComponent,
     MenuComponent,
-    PlannerComponent
+    PlannerComponent,
+    NewTimetableComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { PlannerComponent } from './pages/planner/planner.component';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  providers: [AuthService, RouteGuard],
+  providers: [AuthService, TimetableService, RouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
