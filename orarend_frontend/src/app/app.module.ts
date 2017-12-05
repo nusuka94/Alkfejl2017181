@@ -16,7 +16,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialItemsModule} from './MaterialItemsModule';
 import { PlannerComponent } from './pages/planner/planner.component';
 import { NewTimetableComponent } from './pages/new-timetable/new-timetable.component';
-import {TimetableService} from "./services/timetable.service";
+import {TimetableService} from './services/timetable.service';
 
 
 @NgModule({
