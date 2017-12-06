@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "TIMETABLE")
 @Data
@@ -19,7 +21,7 @@ public class Timetable {
     
     @JoinColumn
     @ManyToOne(targetEntity = Courses.class)
-    private Courses course;
+    private List<Courses> course;
 
     @JoinColumn
     @ManyToOne(targetEntity = User.class)

@@ -18,6 +18,7 @@ hu\elte\inf\orarend\persistence\models\Subjects.class
 hu\elte\inf\orarend\web\services\CoursesService.class
 hu\elte\inf\orarend\web\services\annotations\Role.class
 hu\elte\inf\orarend\persistence\repositories\UserRepository.class
+hu\elte\inf\orarend\web\api\AccountApiController.class
 hu\elte\inf\orarend\persistence\models\Timetable.class
 hu\elte\inf\orarend\persistence\models\Rooms.class
 hu\elte\inf\orarend\web\controllers\AccountController.class

@@ -9,9 +9,10 @@ import {Router} from "@angular/router";
 })
 export class NewTimetableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private timetableService: TimetableService, private router: Router) { }
 
   ngOnInit() {
+    this.timetableService.getCourses();
   }
 
 }
