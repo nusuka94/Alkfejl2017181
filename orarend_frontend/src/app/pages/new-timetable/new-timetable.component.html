@@ -1,9 +1,52 @@
-<p>
-  new-timetable works!
-</p>
-<script>
-  console.log(JSON.stringify(getCourses());
-</script>
-<ul>
-  <li value="getCourses()"></li>
-</ul>
+<div class="container">
+
+  <mat-table #table [dataSource]="dataSource" class="example-table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="subject">
+      <mat-header-cell *matHeaderCellDef>Subject</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.subject }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="room">
+      <mat-header-cell *matHeaderCellDef>Room</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.room }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="courseCode">
+      <mat-header-cell *matHeaderCellDef>Course Code</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.courseCode }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="instructor">
+      <mat-header-cell *matHeaderCellDef>Instructor</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.instructor }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="day">
+      <mat-header-cell *matHeaderCellDef>Day</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.day }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startTime">
+      <mat-header-cell *matHeaderCellDef>Start Time</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.startTime }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef>End Time</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.endTime }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="subjectType">
+      <mat-header-cell *matHeaderCellDef>Subject Type</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.subjectType }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+

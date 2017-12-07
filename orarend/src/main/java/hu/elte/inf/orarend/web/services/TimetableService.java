@@ -21,7 +21,7 @@ public class TimetableService {
     @Autowired
     private TimetableRepository timetableRepository;
     
-    public Iterable<Timetable> timetables() {
+    public Iterable<Timetable> findAll() {
         return timetableRepository.findAll();
     }
     

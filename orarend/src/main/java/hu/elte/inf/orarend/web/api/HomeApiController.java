@@ -2,6 +2,7 @@ package hu.elte.inf.orarend.web.api;
 
 import hu.elte.inf.orarend.persistence.models.Subjects;
 import hu.elte.inf.orarend.web.services.CoursesService;
+import hu.elte.inf.orarend.web.services.TimetableService;
 import hu.elte.inf.orarend.web.services.UserService;
 import hu.elte.inf.orarend.web.services.RoomsService;
 import hu.elte.inf.orarend.web.services.annotations.Authorized;
@@ -24,24 +25,30 @@ public class HomeApiController {
     @Autowired
     private CoursesService coursesService;
 
-    @RequestMapping(value = "/termek", method = RequestMethod.POST)
-    public Object termek() {
-        return roomsService.findAll();
-    }
+    @Autowired
+    private TimetableService timetableService;
 
-    @RequestMapping(value = "/kurzusok", method = RequestMethod.POST)
-    public Object kurzusok() {
+//    @RequestMapping(value = "/termek", method = RequestMethod.POST)
+//    public Object termek() {
+//        return roomsService.findAll();
+//    }
+//
+//    @RequestMapping(value = "/kurzusok", method = RequestMethod.POST)
+//    public Object kurzusok() {
+//        return coursesService.findAll();
+//    }
+//
+//    @RequestMapping(value = "/coursesbysubject", method = RequestMethod.GET)
+//    //@GetMapping("/coursesbysubject")
+//    public Object coursesBySubject(@RequestParam(value = "subject") Subjects subject) {
+//        return coursesService.findAllBySubject(subject);
+//    }
+
+    @RequestMapping(value = "/courses",method = RequestMethod.GET)
+    public Object courses() {
         return coursesService.findAll();
     }
 
-    @RequestMapping(value = "/coursesbysubject", method = RequestMethod.GET)
-    //@GetMapping("/coursesbysubject")
-    public Object coursesBySubject(@RequestParam(value = "subject") Subjects subject) {
-        return coursesService.findAllBySubject(subject);
-    }
-
-    @RequestMapping(value = "/asd",method = RequestMethod.GET)
-    public Object findAll() {
-        return coursesService.findAll();
-    }
+    @RequestMapping(value="/timetables", method=RequestMethod.GET)
+    public Object timetables() { return timetableService.findAll(); }
 }

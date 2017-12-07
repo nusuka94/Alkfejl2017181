@@ -16,17 +16,17 @@ export class AuthService {
   }
 
   getUsers(): Observable<any[]> {
-    return this.http.get('/api/account/').map((response: Response) => response.json());
+    return this.http.get('api/account/').map((response: Response) => response.json());
   }
 
   login(user: User) {
-    return this.http.post('/api/account/login', user).map((response: Response) => response.json());
-    
+    return this.http.post('api/account/login', user).map((response: Response) => response.json());
+
   }
 
   register(user: User) {
-    return this.http.post('/api/account/register', user).map((response: Response) => response.json());
-    
+    return this.http.post('api/account/register', user).map((response: Response) => response.json());
+
   }
 
   /*logout() {

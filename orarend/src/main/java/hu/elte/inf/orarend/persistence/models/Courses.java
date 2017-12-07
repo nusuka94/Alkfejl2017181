@@ -19,13 +19,6 @@ public class Courses {
     @ManyToOne(targetEntity = Subjects.class)
     private Subjects subject;
 
-    @JoinColumn
-    @ManyToOne(targetEntity = Rooms.class)
-    private Rooms room;
-
-    @Column(name="COURSE_CODE")
-    private long courseCode;
-
     @Column(name="INSTRUCTOR", length=1000)
     private String instructor;
 
@@ -38,6 +31,13 @@ public class Courses {
     @Column(name="END_TIME", length=20)
     private String endTime;
 
+    @JoinColumn
+    @ManyToOne(targetEntity = Rooms.class)
+    private Rooms room;
+
     @Column(name="SUBJECT_TYPE", length=20)
     private String subjectType;
+
+    @Column(name="COURSE_CODE")
+    private long courseCode;
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {TimetableService} from '../../services/timetable.service';
+import {Observable} from 'rxjs/Observable';
+import {Timetable} from '../../models/Timetable';
 
 @Component({
   selector: 'app-planner',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private timetableService: TimetableService) { }
 
   ngOnInit() {
+    this.list();
   }
 
+
+  list(): Observable<Timetable[]> {
+    return this.timetableService.getTimetables();
+  }
 }

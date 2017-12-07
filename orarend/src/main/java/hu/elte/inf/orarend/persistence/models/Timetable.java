@@ -20,7 +20,7 @@ public class Timetable {
     private int id;
     
     @JoinColumn
-    @ManyToOne(targetEntity = Courses.class)
+    @ManyToMany(targetEntity = Courses.class)
     private List<Courses> course;
 
     @JoinColumn

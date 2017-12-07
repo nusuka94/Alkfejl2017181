@@ -1,25 +1,19 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
-// import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {Timetable} from '../models/Timetable';
 
 @Injectable()
 export class TimetableService {
-data: any = {};
+  constructor(private http: Http) {}
 
-constructor(private http: Http) {
-    this.getCourses();
-    this.getData();
+  public getTimetables(): Observable<Timetable[]> {
+    return this.http.get('api/home/timetables')
+      .map(this.data);
   }
 
-  getCourses() {
-    return this.http.get('/api/home/asd').map((response: Response) => response.json());
-  }
-
-  getData() {
-    this.getCourses().subscribe(data => {
-      console.log(data);
-      this.data = data
-	  })
+  data(response: Response): Timetable[] {
+    return response.json() as Timetable[] || [];
   }
 }

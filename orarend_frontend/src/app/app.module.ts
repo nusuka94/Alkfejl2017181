@@ -17,6 +17,7 @@ import {MaterialItemsModule} from './MaterialItemsModule';
 import { PlannerComponent } from './pages/planner/planner.component';
 import { NewTimetableComponent } from './pages/new-timetable/new-timetable.component';
 import {TimetableService} from './services/timetable.service';
+import {CourseService} from './services/course.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {TimetableService} from './services/timetable.service';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  providers: [AuthService, TimetableService, RouteGuard],
+  providers: [AuthService, TimetableService, CourseService, RouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
