@@ -12,7 +12,7 @@ public class CoursesService {
     @Autowired
     private CoursesRepository coursesRepository;
 
-    public Courses findByInsturctor(String instructor) {
+    public Courses findByInstructor(String instructor) {
         return coursesRepository.findByInstructor(instructor);
     }
 

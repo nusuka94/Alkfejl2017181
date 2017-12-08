@@ -1,5 +1,11 @@
 <div class="container">
 
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
   <mat-table #table [dataSource]="dataSource" class="example-table">
 
     <!--- Note that these columns can be defined in any order.
@@ -7,12 +13,12 @@
 
     <ng-container matColumnDef="subject">
       <mat-header-cell *matHeaderCellDef>Subject</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.subject }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.subject.name }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="room">
       <mat-header-cell *matHeaderCellDef>Room</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.room }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.room.room }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="courseCode">

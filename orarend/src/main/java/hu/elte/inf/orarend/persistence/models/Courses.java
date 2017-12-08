@@ -1,8 +1,12 @@
 package hu.elte.inf.orarend.persistence.models;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "COURSES")
@@ -14,6 +18,10 @@ public class Courses {
     @Id
     @Column(name="ID")
     private long id;
+
+    @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
+    private List<Timetable> timetables;
 
     @JoinColumn
     @ManyToOne(targetEntity = Subjects.class)
