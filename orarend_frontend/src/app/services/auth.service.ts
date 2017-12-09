@@ -9,26 +9,17 @@ import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  user: User;
-  isLoggedIn: boolean;
+  _user: User;
+  isLoggedIn = false;
   redirectUrl: string;
 
   public loggedIn$ = new BehaviorSubject<boolean>(this.isLoggedIn);
 
   constructor(private http: Http) {
-    // this.user = new User();
+
   }
 
-  getUsers(): Observable<any[]> {
-    return this.http.get('api/account/').map((response: Response) => response.json());
-  }
-
-  /*login(user: User) {
-    return this.http.post('api/account/login', user).map((response: Response) => response.json());
-
-  }*/
-
-  login(user: User) {
+  public login(user: User): Observable<User> {
     return this.http.post('api/account/login', user)
       .map((response: Response) => response.json() as User || null)
       .pipe(
@@ -37,23 +28,32 @@ export class AuthService {
 
   }
 
-  register(user: User) {
+  public logout(): Observable<any> {
+    return this.http.post('api/account/logout', {})
+      .map((response: Response) => this.setLoggedIn(null));
+  }
+
+  public register(user: User) {
     return this.http.post('api/account/register', user).map((response: Response) => response.json());
 
   }
 
   public setLoggedIn(user?: User) {
-    this.user = user;
+    this._user = user;
     this.isLoggedIn = !!user;
     this.loggedIn$.next(this.isLoggedIn);
   }
 
-  /*logout() {
-    return this.http.get(Server.routeTo(Routes.LOGOUT))
-      .map(res => {
-        this.user = new User();
-        this.isLoggedIn = false;
-      })
-  }*/
+  get currentUser(): User {
+    return this._user;
+  }
+
+  get currentUserId(): number {
+    return this.currentUser.id;
+  }
+
+  get isAuthenticated(): boolean {
+    return !!this.currentUser;
+  }
 
 }

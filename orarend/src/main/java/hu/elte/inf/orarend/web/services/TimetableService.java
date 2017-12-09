@@ -24,20 +24,28 @@ public class TimetableService {
     public Iterable<Timetable> findAll() {
         return timetableRepository.findAll();
     }
+
+    private Timetable timetable;
     
     public Iterable<Timetable> listByUser(User user) {
         if(user == null) {
             return timetableRepository.findAll();
         }
-        String username = user.getUsername();
-        return timetableRepository.findByOwner(username);
+        //String username = user.getUsername();
+        long userId = user.getId();
+        return timetableRepository.findByUser(userId);
     }
     
     public Timetable create(Timetable timetable) {
-        return timetableRepository.save(timetable);
+        this.timetable = timetableRepository.save(timetable);
+        return timetable;
+    }
+
+    public Iterable<Timetable> getByUser(User user) {
+        return timetableRepository.findByUser(user.getId());
     }
     
-    public void delete(int id) {
+    public void delete(long id) {
         timetableRepository.delete(id);
     }
 }

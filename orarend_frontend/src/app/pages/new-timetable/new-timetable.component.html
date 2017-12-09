@@ -1,4 +1,10 @@
-<div class="container">
+<div class="added-courses">
+  <mat-nav-list>
+    <a mat-list-item *ngFor="let course of courses">{{ course }}</a>
+  </mat-nav-list>
+</div>
+
+<div class="example-container">
 
   <div class="example-header">
     <mat-form-field>
@@ -10,6 +16,11 @@
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="subject">
       <mat-header-cell *matHeaderCellDef>Subject</mat-header-cell>
@@ -54,5 +65,26 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
+  <!--<form class="example-form">-->
+    <!--<mat-form-field class="example-full-width" >-->
+      <!--<input matInput placeholder="ID">-->
+    <!--</mat-form-field>-->
+    <!--<button mat-raised-button class="mat-primary" (click)="addCourse()">Add</button>-->
+  <!--</form>-->
+
+  <form [formGroup]="addForm" novalidate>
+    <div class="form-control">
+      <mat-form-field>
+        <input matInput placeholder="ID" formControlName="courseid">
+        <mat-error *ngIf="courseid.hasError('required')">
+          ID is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="mat-primary" (click)="addCourse()" [disabled]="!addForm.valid">Add</button>
+    </div>
+  </form>
 </div>
+
+<div class="backbutton"><a mat-raised-button class="mat-primary" routerLink="/planner">Back</a></div>
 

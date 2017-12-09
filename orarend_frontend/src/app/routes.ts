@@ -40,8 +40,8 @@ export const appRoutes: Routes = [
   {
     path: 'planner',
     component: PlannerComponent,
-    data: {roles: [Role.USER, Role.GUEST]},
+    data: {roles: [Role.USER]},
     pathMatch: 'full'
   },
-  {path: 'planner/new', component: NewTimetableComponent, data: {roles: [Role.USER, Role.GUEST]}, pathMatch: 'full'}
+  {path: 'planner/new', component: NewTimetableComponent, data: {roles: [Role.USER]}, pathMatch: 'full'},
 ]

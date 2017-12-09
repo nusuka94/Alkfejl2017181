@@ -11,4 +11,5 @@ export class Course {
   startTime: string;
   endTime: string;
   subjectType: string;
+
 }

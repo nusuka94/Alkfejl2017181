@@ -2,5 +2,27 @@
   <h2 class="mat-h2">Timetables</h2>
 
   <a mat-raised-button routerLink="/planner/new" class="mat-primary">Add new timetable</a>
+  <a mat-raised-button class="mat-primary" routerLink="/mytimetables">My Timetables</a>
+  <a mat-raised-button class="mat-primary" routerLink="/">Back</a>
 
+  <mat-table #table [dataSource]="dataSource" class="example-table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="userId">
+      <mat-header-cell *matHeaderCellDef>Owner</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.user.username }}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
+

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CourseService} from '../../services/course.service';
 import {Course} from '../../models/Course';
 import {DataSource} from '@angular/cdk/collections';
@@ -8,74 +8,66 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/switchMap';
 import {AuthService} from '../../services/auth.service';
 import {MatTableDataSource} from '@angular/material';
+import {Timetable} from '../../models/Timetable';
+import {TimetableService} from '../../services/timetable.service';
+import {Router} from '@angular/router';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-new-timetable',
   templateUrl: './new-timetable.component.html',
   styleUrls: ['./new-timetable.component.css']
 })
-export class NewTimetableComponent implements OnInit, OnDestroy {
-  // public loadInProgress = false;
-  // public displayedColumns = ['subject', 'room', 'courseCode', 'instructor', 'day', 'startTime', 'endTime', 'subjectType'];
-  // public dataSource: CourseDataSource;
-  // private courses: Course[];
-  //
-  // constructor(private courseService: CourseService, private authService: AuthService) { }
-  //
-  // ngOnInit() {
-  //   this.refreshCourses();
-  //   /*this.authService.loggedIn$.subscribe(
-  //     (p: boolean) => {
-  //       this.refreshCourses();
-  //     }
-  //   );*/
+export class NewTimetableComponent {
+   public displayedColumns = ['id', 'subject', 'room', 'courseCode', 'instructor', 'day', 'startTime', 'endTime', 'subjectType'];
+   public dataSource: CourseDataSource;
+   timetable: Timetable;
+   courses: number[];
+
+   addForm: FormGroup = new FormGroup({
+     courseid: new FormControl('', [Validators.required])
+   });
+
+   constructor(private timetableService: TimetableService, private courseService: CourseService,
+               private authService: AuthService, private router: Router) {
+     if (this.authService.isAuthenticated) {
+       this.refreshCourses();
+       this.timetable = new Timetable(this.authService.currentUser);
+       (this.timetableService.newTimetable(this.timetable))
+         .subscribe(res => res, err => console.log(err));
+       console.log(this.timetable);
+     } else {
+       console.log('Unauthorized.');
+       this.router.navigate(['/login']);
+     }
+   }
+
+    public refreshCourses() {
+     this.dataSource = new CourseDataSource(this.courseService);
+    }
+
+    get courseid(): AbstractControl {
+     return this.addForm.get('courseid');
+    }
+
+  // applyFilter(filterValue: string) {
+  //   filterValue = filterValue.trim();
+  //   filterValue = filterValue.toLowerCase();
+  //   this.dataSource.filter = filterValue;
   // }
-  //
-  // ngOnDestroy() {
-  //   // this.authService.loggedIn$.unsubscribe();
-  // }
-  //
 
-  public ELEMENT_DATA: Course[];
-  public displayedColumns = ['subject', 'room', 'courseCode', 'instructor', 'day', 'startTime', 'endTime', 'subjectType'];
-  public dataSource: MatTableDataSource<Course>;
-
-  public refreshCourses() {
-    this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-    this.courseService.getCourses().subscribe((courses: Course[]) => this.ELEMENT_DATA = courses);
+  addCourse() {
+     this.courses.push(this.courseid.value);
+      // this.timetableService.addCourse(this.timetable.id, this.courseid.value);
   }
 
+  submit() {
 
-
-  constructor(private courseService: CourseService) {
-    this.courseService.getCourses().subscribe((courses: Course[]) => this.ELEMENT_DATA = courses);
-
-  }
-
-  ngOnInit() {
-        this.refreshCourses();
-    //   /*this.authService.loggedIn$.subscribe(
-    //     (p: boolean) => {
-    //       this.refreshCourses();
-    //     }
-    //   );*/
-  }
-
-  ngOnDestroy() {
-    //   // this.authService.loggedIn$.unsubscribe();
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
   }
 }
 
 export class CourseDataSource implements DataSource<Course> {
-  public resultsLength = 0;
   public isLoadingResults = false;
-  // public filter: string;
 
   constructor(private courseService: CourseService) {
 
@@ -89,14 +81,12 @@ export class CourseDataSource implements DataSource<Course> {
       })
       .map((data: Course[]) => {
         this.isLoadingResults = false;
-        this.resultsLength = data.length;
 
         return data;
       });
   }
 
-
-
-
   disconnect(): void {}
 }
+
+

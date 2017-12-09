@@ -24,6 +24,10 @@ public class UserService {
         return null;
     }
 
+    public void logout() {
+        this.user = null;
+    }
+
     public User register(User user) {
         user.setRole(User.Role.USER);
         this.user = userRepository.save(user);

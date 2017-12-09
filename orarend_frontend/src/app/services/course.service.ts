@@ -10,11 +10,7 @@ export class CourseService {
 
   public getCourses(): Observable<Course[]> {
     return this.http.get('api/home/courses')
-      .map(this.data);
-  }
-
-  data(response: Response): Course[] {
-    return response.json() as Course[] || [];
+      .map((response: Response) => response.json());
   }
 
 }

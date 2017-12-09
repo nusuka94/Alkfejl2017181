@@ -23,23 +23,34 @@ import {AuthService} from './services/auth.service';
 @Injectable()
 export class RouteGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(/*private authService: AuthService, */private router: Router) { }
+
+  // canActivate(
+  //   next: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  //
+  //   if (this.authService.isLoggedIn) {
+  //     if (next.data.roles && next.data.roles.includes(this.authService.user.role)) {
+  //       return true;
+  //     } else {
+  //       // this.router.navigate(['/login']);
+  //       console.log('No permission');
+  //       return false;
+  //     }
+  //   }
+  //   this.authService.redirectUrl = state.url;
+  //   this.router.navigate(['/login']);
+  //   return false;
+  // }
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-    if (this.authService.isLoggedIn) {
-      if (next.data.roles && next.data.roles.includes(this.authService.user.role)) {
-        return true;
-      } else {
-        // this.router.navigate(['/login']);
-        console.log('No permission');
-        return false;
-      }
+    state: RouterStateSnapshot): boolean {
+    if (localStorage.getItem('currentUser')) {
+      return true;
     }
-    this.authService.redirectUrl = state.url;
-    this.router.navigate(['/login']);
+
+    this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
     return false;
   }
 }

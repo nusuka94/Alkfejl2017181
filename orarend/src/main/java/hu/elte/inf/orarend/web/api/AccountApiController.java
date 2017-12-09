@@ -38,4 +38,10 @@ public class AccountApiController {
     public ResponseEntity<User> register(@RequestBody User user) {
         return ResponseEntity.ok(userService.register(user));
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<User> logout() {
+        userService.logout();
+        return ResponseEntity.ok().build();
+    }
 }

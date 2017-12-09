@@ -18,6 +18,7 @@ import { PlannerComponent } from './pages/planner/planner.component';
 import { NewTimetableComponent } from './pages/new-timetable/new-timetable.component';
 import {TimetableService} from './services/timetable.service';
 import {CourseService} from './services/course.service';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {CourseService} from './services/course.service';
     RegisterComponent,
     MenuComponent,
     PlannerComponent,
-    NewTimetableComponent
+    NewTimetableComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,8 @@ import {CourseService} from './services/course.service';
     HttpModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MaterialItemsModule
+    MaterialItemsModule,
+    MatListModule
   ],
   providers: [AuthService, TimetableService, CourseService, RouteGuard],
   bootstrap: [AppComponent]

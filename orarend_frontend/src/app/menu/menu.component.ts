@@ -14,33 +14,17 @@ interface MenuItem {
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  private common: MenuItem[] = [
-    {link: '/login', title: 'Login'}
-  ];
-
-  private roleMenus = new Map<String, MenuItem[]>([
-    // [Role.GUEST, [...this.common]],
-    [Role.USER, [...this.common, {link: '/planner', title: 'Planner'}]],
-    [Role.ADMIN, [...this.common, {link: '/planner', title: 'Planner'}]]
-  ]);
-
-  menus: MenuItem[];
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.setMenus();
-      }
-    });
+
   }
 
-  setMenus() {
-    if (this.authService.isLoggedIn) {
-      this.menus = this.roleMenus.get(this.authService.user.role);
-    } else {
-      this.menus = this.roleMenus.get(Role.GUEST);
-    }
+  logout() {
+    this.authService.logout().subscribe(
+      res => this.router.navigate(['/login']),
+      err => err
+    );
   }
 }

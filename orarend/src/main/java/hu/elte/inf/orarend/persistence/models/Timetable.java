@@ -18,7 +18,7 @@ public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private long id;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="timetable_course",joinColumns = @JoinColumn(name="timetable_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "course_id",referencedColumnName = "id"))
@@ -26,5 +26,5 @@ public class Timetable {
 
     @JoinColumn
     @ManyToOne(targetEntity = User.class)
-    private User owner;
+    private User user;
 }
