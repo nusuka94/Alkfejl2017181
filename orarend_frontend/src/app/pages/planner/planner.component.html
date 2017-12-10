@@ -1,8 +1,8 @@
 <div class="page-body">
   <h2 class="mat-h2">Timetables</h2>
 
-  <a mat-raised-button routerLink="/planner/new" class="mat-primary">Add new timetable</a>
-  <a mat-raised-button class="mat-primary" routerLink="/mytimetables">My Timetables</a>
+  <!--<a mat-raised-button routerLink="/planner/new" class="mat-primary">Add new timetable</a>-->
+  <a mat-raised-button class="mat-primary" routerLink="/mytimetables" (click)="mytimetables()">My Timetables</a>
   <a mat-raised-button class="mat-primary" routerLink="/">Back</a>
 
   <mat-table #table [dataSource]="dataSource" class="example-table">

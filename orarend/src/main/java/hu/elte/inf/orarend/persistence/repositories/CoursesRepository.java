@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface CoursesRepository extends CrudRepository<Courses, Long>{
 
     Courses findByInstructor(String instructor);
+    Courses findById(long id);
     Courses findByDay(String day);
     Courses findByStartTime(String startTime);
     Iterable<Courses> findAllBySubject(Subjects subject);

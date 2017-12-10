@@ -15,6 +15,7 @@ public class CoursesService {
     public Courses findByInstructor(String instructor) {
         return coursesRepository.findByInstructor(instructor);
     }
+    public Courses findById(long id) { return coursesRepository.findById(id); }
 
     public Iterable<Courses> findAll() {
         return coursesRepository.findAll();

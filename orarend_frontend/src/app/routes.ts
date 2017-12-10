@@ -4,22 +4,8 @@ import {LoginComponent} from './pages/login/login.component';
 import {Role} from './models/User';
 import {RegisterComponent} from './pages/register/register.component';
 import {PlannerComponent} from './pages/planner/planner.component';
-import {NewTimetableComponent} from './pages/new-timetable/new-timetable.component';
-
-//export const appRoutes: Routes = [
-//  {
-//    path: '',
-//    canActivateChild: [RouteGuard],
-//    children: [
-//      {path: '', redirectTo: 'login', pathMatch: 'full'},
-//      {path: 'login', component: LoginComponent, data: {roles: [Role.GUEST]}, pathMatch: 'full'},
-//      {path: 'register', component: RegisterComponent, data: {roles: [Role.GUEST]}, pathMatch: 'full'},
-//      {path: 'planner', component: PlannerComponent, data: {roles: [Role.USER, Role.GUEST]}, pathMatch: 'full'},
-//      {path: 'planner/new', component: NewTimetableComponent, data: {roles: [Role.USER, Role.GUEST]}, pathMatch: 'full'}
-//
-//    ]
-//  }
-//]
+import {MyTimetablesComponent} from './pages/my-timetables/my-timetables.component';
+import {TimetableDetailsComponent} from './pages/timetable-details/timetable-details.component';
 
 export const appRoutes: Routes = [
   {
@@ -43,5 +29,6 @@ export const appRoutes: Routes = [
     data: {roles: [Role.USER]},
     pathMatch: 'full'
   },
-  {path: 'planner/new', component: NewTimetableComponent, data: {roles: [Role.USER]}, pathMatch: 'full'},
+  {path: 'planner/mytimetables', component: MyTimetablesComponent, data: {roles: [Role.USER]}, pathMatch: 'full'},
+  {path: 'planner/mytimetables/:id', component: TimetableDetailsComponent, data: {roles: [Role.USER]}, pathMatch: 'full'}
 ]

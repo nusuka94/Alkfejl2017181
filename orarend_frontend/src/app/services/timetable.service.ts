@@ -3,12 +3,10 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {Timetable} from '../models/Timetable';
-import {User} from '../models/User';
-import {AuthService} from './auth.service';
 
 @Injectable()
 export class TimetableService {
-  constructor(private http: Http, private authService: AuthService) {}
+  constructor(private http: Http) {}
 
   public getTimetables(): Observable<Timetable[]> {
     return this.http.get('api/home/timetables')
@@ -20,8 +18,22 @@ export class TimetableService {
       .map((response: Response) => response.json());
   }
 
-  public getUserTimetables(user: User): Observable<Timetable[]> {
-    return this.http.get('api/home/usertimetables?user=' + user)
+  public getUserTimetables(id: number): Observable<Timetable[]> {
+    return this.http.get('api/home/usertimetables?id=' + id)
+      .map((response: Response) => response.json());
+  }
+
+  public deleteTimetable(id: number) {
+    return this.http.delete('/api/home/timetables/' + id);
+  }
+
+  public read(id: number): Observable<Timetable> {
+    return this.http.get('/api/home/timetables/' + id)
+      .map((response: Response) => response.json());
+  }
+
+  public addCourse(tid: number, cid: number) {
+    return this.http.post('/api/home/timetables/' + tid, cid)
       .map((response: Response) => response.json());
   }
 

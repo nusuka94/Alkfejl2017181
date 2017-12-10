@@ -20,3 +20,4 @@ insert into timetable_course(timetable_id,course_id) values(1,48);
 insert into timetable_course(timetable_id,course_id) values(1,1);
 
 insert into timetable_course(timetable_id,course_id) values(2,1456);
+insert into timetable_course(timetable_id,course_id) values(2,48);

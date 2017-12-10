@@ -15,10 +15,10 @@ import { MenuComponent } from './menu/menu.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialItemsModule} from './MaterialItemsModule';
 import { PlannerComponent } from './pages/planner/planner.component';
-import { NewTimetableComponent } from './pages/new-timetable/new-timetable.component';
 import {TimetableService} from './services/timetable.service';
 import {CourseService} from './services/course.service';
-import {MatListModule} from '@angular/material/list';
+import { MyTimetablesComponent } from './pages/my-timetables/my-timetables.component';
+import { TimetableDetailsComponent } from './pages/timetable-details/timetable-details.component';
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import {MatListModule} from '@angular/material/list';
     RegisterComponent,
     MenuComponent,
     PlannerComponent,
-    NewTimetableComponent,
+    MyTimetablesComponent,
+    TimetableDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +38,7 @@ import {MatListModule} from '@angular/material/list';
     HttpModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MaterialItemsModule,
-    MatListModule
+    MaterialItemsModule
   ],
   providers: [AuthService, TimetableService, CourseService, RouteGuard],
   bootstrap: [AppComponent]

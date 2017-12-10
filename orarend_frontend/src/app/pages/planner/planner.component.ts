@@ -19,6 +19,9 @@ export class PlannerComponent implements OnInit, OnDestroy {
   public displayedColumns = ['id', 'userId'];
   public dataSource: TimetableDataSource;
 
+  timetable: Timetable;
+  timetableId: number;
+
   constructor(private timetableService: TimetableService, private authService: AuthService, private router: Router) {
 
   }
@@ -30,20 +33,6 @@ export class PlannerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  new() {
-    if (this.authService.isAuthenticated) {
-      // this.timetableService.newTimetable(new Timetable(this.authService.currentUserId))
-      //   .subscribe(
-      //     res => this.router.navigate(['/planner/new']),
-      //     err => console.log(err)
-      //   );
-      this.router.navigate(['/planner/new']);
-    } else {
-      console.log('Unauthorized.');
-      this.router.navigate(['/login']);
-    }
   }
 
   mytimetables() {
@@ -61,26 +50,16 @@ export class PlannerComponent implements OnInit, OnDestroy {
 }
 
 export class TimetableDataSource implements DataSource<Timetable> {
-  public isLoadingResults = false;
-
   constructor(private timetableService: TimetableService) {
 
   }
 
   connect(): Observable<Timetable[]> {
-    return Observable.merge([])
-      .startWith(() => this.isLoadingResults = true)
-      .switchMap(() => {
-        return this.timetableService.getTimetables();
-      })
-      .map((data: Timetable[]) => {
-        this.isLoadingResults = false;
-
-        return data;
-      });
+    return this.timetableService.getTimetables();
   }
 
-  disconnect(): void {
+  disconnect() {
+
   }
 }
 

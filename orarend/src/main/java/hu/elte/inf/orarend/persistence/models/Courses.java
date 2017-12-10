@@ -21,7 +21,7 @@ public class Courses {
 
     @ManyToMany(mappedBy = "courses")
     @JsonIgnore
-    private List<Timetable> timetables;
+    public List<Timetable> timetables;
 
     @JoinColumn
     @ManyToOne(targetEntity = Subjects.class)

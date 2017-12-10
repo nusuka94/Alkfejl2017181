@@ -20,11 +20,12 @@ public class Timetable {
     @Column(name = "ID")
     private long id;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name="timetable_course",joinColumns = @JoinColumn(name="timetable_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "course_id",referencedColumnName = "id"))
-    private List<Courses> courses;
+    public List<Courses> courses;
 
     @JoinColumn
     @ManyToOne(targetEntity = User.class)
     private User user;
+
 }

@@ -13,4 +13,8 @@ export class CourseService {
       .map((response: Response) => response.json());
   }
 
+  public getCourseById(id: number): Observable<Course> {
+    return this.http.get('api/home/coursebyid?id=' + id)
+      .map((response: Response) => response.json());
+  }
 }

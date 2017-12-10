@@ -1,0 +1,76 @@
+<!--<div class="page-body">-->
+  <!--<h2 class="mat-h2">My Timetables</h2>-->
+
+  <!--<a mat-raised-button class="mat-primary" routerLink="/planner">Back</a>-->
+  <!--<mat-list>-->
+    <!--<mat-list-item *ngFor="let timetable of timetables | async">-->
+      <!--<h3 matLine>-->
+        <!--{{ timetable.id }}-->
+      <!--</h3>-->
+      <!--<mat-list-item *ngFor="let courses of timetable.courses">-->
+        <!--<p matLine>-->
+          <!--{{ courses.subject.name }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.room.room }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.courseCode }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.instructor }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.day }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.startTime }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.endTime }}-->
+        <!--</p>-->
+        <!--<p matLine>-->
+          <!--{{ courses.subjectType }}-->
+        <!--</p>-->
+      <!--</mat-list-item>-->
+      <!--<a mat-raised-button class="mat-primary" (click)="deleteTimetable(timetable.id)">Delete</a>-->
+    <!--</mat-list-item>-->
+  <!--</mat-list>-->
+
+<!--</div>-->
+
+
+<!--<div *ngFor="let timetable of timetables | async">-->
+  <!--{{ timetable.id }}-->
+<!--</div>-->
+
+<div class="page-body">
+  <h2 class="mat-h2">My Timetables</h2>
+
+  <a mat-raised-button class="mat-primary" (click)="new()">Add new timetable</a>
+  <a mat-raised-button class="mat-primary" routerLink="/planner">Back</a>
+
+  <mat-table #table [dataSource]="dataSource" class="example-table">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="userId">
+      <mat-header-cell *matHeaderCellDef>Owner</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.user.username }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <a mat-button [routerLink]="'/planner/mytimetables/' + row.id">Details</a>
+        <button mat-button (click)="deleteTimetable(row.id)" class="mat-accent">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
